@@ -11,6 +11,26 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #3 - Use the same list display from search.html -->
+    <span th:if="${maps != null}">
+        <table class="transparentWhite">
+            <tr>
+                <th>POSITION TYPE</th>
+                <th>NAME</th>
+                <th>EMPLOYER</th>
+                <th>LOCATION</th>
+                <th>CORE COMPETENCY</th>
+            </tr>
+
+            <span th:each = "map : ${maps}">
+                    <tr>
+                        <span th:each="thing : ${map}">
+                        <!--<td th:text="${thing.key}">"this is the key"</td>-->
+                        <td th:text="${thing.value}">"this is the value"</td>
+                        </span>
+                    </tr>
+            </span>
+         </table>
+    </span>
 
 </div>
 

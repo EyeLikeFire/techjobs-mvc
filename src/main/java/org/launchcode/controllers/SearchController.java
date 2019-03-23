@@ -18,7 +18,35 @@ public class SearchController {
 
     @RequestMapping(value = "")
     public String search(Model model) {
+        ArrayList<HashMap<String, String>> resultMapTest;
+        resultMapTest = JobData.findByValue("Java");
         model.addAttribute("columns", ListController.columnChoices);
+        //model.addAttribute("maps", "[1,2,3,4,5]" );
+        return "search";
+    }
+
+    @RequestMapping(value = "results")
+    public String searchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
+        model.addAttribute("columns", ListController.columnChoices);
+
+        ArrayList<HashMap<String, String>> resultMap;
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+
+        if(searchType.equals("all")){
+            resultMap = JobData.findByValue(searchTerm);
+            //System.out.println(JobData.findByValue(searchTerm));
+        } else {
+
+            resultMap = JobData.findByColumnAndValue(searchType, searchTerm);
+        }
+
+        System.out.println(resultMap);
+
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+
+        model.addAttribute("maps", resultMap);
         return "search";
     }
 

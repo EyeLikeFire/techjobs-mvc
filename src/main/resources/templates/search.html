@@ -35,10 +35,26 @@
     </form>
 
     <hr />
+    <span th:if="${maps != null}">
+        <table class="transparentWhite">
+            <tr>
+                <th>POSITION TYPE</th>
+                <th>NAME</th>
+                <th>EMPLOYER</th>
+                <th>LOCATION</th>
+                <th>CORE COMPETENCY</th>
+            </tr>
 
-    <!-- TODO #2 - Loop over jobs map to display all job fields -->
-
+            <span th:each = "map : ${maps}">
+                    <tr>
+                        <span th:each="thing : ${map}">
+                        <!--<td th:text="${thing.key}">"this is the key"</td>-->
+                        <td th:text="${thing.value}">"this is the value"</td>
+                        </span>
+                    </tr>
+            </span>
+         </table>
+    </span>
 </div>
-
 </body>
 </html>

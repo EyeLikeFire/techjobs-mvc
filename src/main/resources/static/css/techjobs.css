@@ -1,3 +1,16 @@
+body {
+background-image:  url("https://i.postimg.cc/dVmjW0g5/almost-Opaque.jpg");
+  background-size: 25%;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+}
+.transparentWhite{
+background-color: rgba(255,255,255, 0.45);
+}
+
+
 .body-content {
     margin-top: 72px;
 }
